@@ -465,18 +465,18 @@ I2C_AV_Config 	u1	(	//	Host Side
 // added code
 
 // dino module
-Dino_Interperter u13 (
-   // ins
-   .clock(TD_CLK27), // same clock VGA uses
-   .columnX(VGA_X),
-   .rowY(VGA_Y),
-   .geyscalePixel(mY),
+// Dino_Interperter u13 (
+//    // ins
+//    .clock(TD_CLK27), // same clock VGA uses
+//    .columnX(VGA_X),
+//    .rowY(VGA_Y),
+//    .geyscalePixel(mY),
 
-   //outs
-   .upCommand(GPIO_1[34]),
-   .downCommand(GPIO_1[35]),
-   .setRedFlag(setThisPixelToRed),
-   .timeTillCollision(collisionTimeToPass));
+//    //outs
+//    .upCommand(GPIO_1[34]),
+//    .downCommand(GPIO_1[35]),
+//    .setRedFlag(setThisPixelToRed),
+//    .timeTillCollision(collisionTimeToPass));
 
 // dino module to 7seg display (for collision)
 //	display for the number of frames till collision
