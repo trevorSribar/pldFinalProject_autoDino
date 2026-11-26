@@ -284,8 +284,8 @@ assign	m2VGA_Read	=	VGA_Y[0]		?	VGA_Read	:	1'b0		;
 assign	mYCbCr_d	=	!VGA_Y[0]		?	m1YCbCr		:
 											      m2YCbCr		;
 // only have one of these, it enables/disbles 121 filtering
-//assign	mYCbCr		=	m5YCbCr; // w/ filtering
-assign	mYCbCr		=	m3YCbCr; // w/ out filtering
+assign	mYCbCr		=	m5YCbCr; // w/ filtering
+//assign	mYCbCr		=	m3YCbCr; // w/ out filtering
 
 assign	Tmp1	=	m4YCbCr[7:0]+mYCbCr_d[7:0];
 assign	Tmp2	=	m4YCbCr[15:8]+mYCbCr_d[15:8];
@@ -393,7 +393,7 @@ YCbCr2RGB 			u8	(	//	Output Side
 							//	Input Side
 							.iY(mY),
 							.iCb(mCb),
-							.iCr(8'd128),
+							.iCr(mCr),
 							.iDVAL(VGA_Read),
 							//	Control Signal
 							.iRESET(!DLY2),
@@ -405,9 +405,12 @@ wire [9:0] vga_g10;
 wire [9:0] vga_b10;
 
 // we want to use the flag to make it red
-assign VGA_R = setThisPixelToRed ? 8'hC0 : vga_r10[9:2];
-assign VGA_G = setThisPixelToRed ? 8'h0A : vga_g10[9:2];
-assign VGA_B = setThisPixelToRed ? 8'h0A : vga_b10[9:2];
+assign VGA_R = vga_r10[9:2];
+assign VGA_G = vga_g10[9:2];
+assign VGA_B = vga_b10[9:2];
+// assign VGA_R = setThisPixelToRed ? 8'hC0 : vga_r10[9:2];
+// assign VGA_G = setThisPixelToRed ? 8'h0A : vga_g10[9:2];
+// assign VGA_B = setThisPixelToRed ? 8'h0A : vga_b10[9:2];
 
 VGA_Ctrl			u9	(	//	Host Side
 							.iRed(mRed),
