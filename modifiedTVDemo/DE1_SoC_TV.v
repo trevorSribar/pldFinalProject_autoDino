@@ -480,14 +480,14 @@ I2C_AV_Config 	u1	(	//	Host Side
 
 // dino module to 7seg display (for collision)
 //	display for the number of frames till collision
-SEG7_LUT_INT 	u0	(	.oSEG0(HEX0),
-							.oSEG1(HEX1),
-							.oSEG2(HEX2),
-							.intIn(collisionTimeToPass));
+// SEG7_LUT_INT 	u0	(	.oSEG0(HEX0),
+// 							.oSEG1(HEX1),
+// 							.oSEG2(HEX2),
+// 							.intIn(collisionTimeToPass));
 
 // display for running keyboard commands
-SEG7_LUT_SW    u14 ( .oSEG(HEX5),
-                     .clkIn(TD_CLK27),
-                     .swIn(SW[0]));
+// SEG7_LUT_SW    u14 ( .oSEG(HEX5),
+//                      .clkIn(TD_CLK27),
+//                      .swIn(SW[0]));
 
 endmodule
