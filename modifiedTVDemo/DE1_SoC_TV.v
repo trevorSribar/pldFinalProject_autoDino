@@ -210,7 +210,7 @@ wire	CLK_25;
 wire		AUD_CTRL_CLK;	//	For Audio Controller
 
 //	For ITU-R 656 Decoder
-wire	[11:0]	YCbCr;
+wire	[15:0]	YCbCr;
 wire	[9:0]	TV_X;
 wire			TV_DVAL;
 
