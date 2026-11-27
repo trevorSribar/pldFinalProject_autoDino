@@ -19,7 +19,7 @@ module Dino_Interperter(
 
     output upCommand,
     output downCommand,
-    output [11:0] timeTillCollision,
+    output reg [11:0] timeTillCollision,
     output setRedFlag
 );
 
@@ -28,8 +28,8 @@ module Dino_Interperter(
 //
 
 // the closest obstacle
-reg [8:0] earliestX = DINO_EARLY_X_RESET_VAL;
-reg [8:0] oldEarliestX = DINO_EARLY_X_RESET_VAL;
+reg [8:0] earliestX = `DINO_EARLY_X_RESET_VAL;
+reg [8:0] oldEarliestX = `DINO_EARLY_X_RESET_VAL;
 reg [7:0] posObjY = 0;
 
 // how fast that obstacle is moving
@@ -53,11 +53,11 @@ wire inLayer = columnX > 250 && columnX < 450 && rowY > 240 && rowY < 284;
 always @(posedge newFrame) begin
 
     // if the earliest X is the reset value, then there are no obstacles
-    if(earliestX == DINO_EARLY_X_RESET_VAL) begin
-        timeTillCollision = DINO_NO_OBS_TIME;
+    if(earliestX == `DINO_EARLY_X_RESET_VAL) begin
+        timeTillCollision = `DINO_NO_OBS_TIME;
     end else begin  // there is an obstacle
         // if it is the same, then it hasn't moved
-        else if (earliestX == oldEarliestX) begin
+        if (earliestX == oldEarliestX) begin
             framesPerMove <= framesPerMove+1;
         // if we are at the same obstacle then we see how much it moved
         end else if (earliestX<oldEarliestX) begin
@@ -69,14 +69,14 @@ always @(posedge newFrame) begin
         end
 
         // find out when we shoud have a collision
-        timeTillCollision = (earliestX - DINO_LOCATION_X) * oldFramesPerMove / movementPerFrame;
+        timeTillCollision = (earliestX - `DINO_LOCATION_X) * oldFramesPerMove / movementPerFrame;
     end
     
     // Store "previous loop" variables
     oldEarliestX = earliestX;
 
-    // set flag to reset loop variables
-    resetLoopVariables = 1;
+    // reset loop variables
+    earliestX = `DINO_EARLY_X_RESET_VAL;
 end
 
 // the actual logic
