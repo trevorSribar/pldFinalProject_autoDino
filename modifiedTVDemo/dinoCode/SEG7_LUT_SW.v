@@ -26,6 +26,6 @@ always @(posedge clkIn) begin
         nextPosToWrite <= nextPosToWrite;
 end
 
-assign oSEG = swIn ? 7'b0111111 : nextPosToWrite;
+assign oSEG = swIn ? nextPosToWrite : 7'b0111111;
 
 endmodule

@@ -259,6 +259,7 @@ wire            PAL;
 // added stuff
 wire [15:0] collisionTimeToPass;
 wire setThisPixelToRed;
+wire setThisPixelToBlue;
 
 //=============================================================================
 // Structural coding
@@ -408,9 +409,9 @@ wire [9:0] vga_b10;
 // assign VGA_R = vga_r10[9:2];
 // assign VGA_G = vga_g10[9:2];
 // assign VGA_B = vga_b10[9:2];
-assign VGA_R = setThisPixelToRed ? 8'hC0 : vga_r10[9:2];
-assign VGA_G = setThisPixelToRed ? 8'h0A : vga_g10[9:2];
-assign VGA_B = setThisPixelToRed ? 8'h0A : vga_b10[9:2];
+assign VGA_R = setThisPixelToRed ? 8'hC0 : setThisPixelToBlue ? 8'h00 : vga_r10[9:2];
+assign VGA_G = setThisPixelToRed ? 8'h0A : setThisPixelToBlue ? 8'h5A : vga_g10[9:2];
+assign VGA_B = setThisPixelToRed ? 8'h0A : setThisPixelToBlue ? 8'hFA : vga_b10[9:2];
 
 VGA_Ctrl			u9	(	//	Host Side
 							.iRed(mRed),
@@ -471,11 +472,14 @@ Dino_Interperter u13 (
    .columnX(VGA_X),
    .rowY(VGA_Y),
    .geyscalePixel(mY),
+	.newFrame(VGA_VS),
+   .displayBarrierSwitch(SW[1]),
 
    //outs
    .upCommand(GPIO_1[34]),
    .downCommand(GPIO_1[35]),
    .setRedFlag(setThisPixelToRed),
+   .setBlueFlag(setThisPixelToBlue),
    .timeTillCollision(collisionTimeToPass));
 
 // dino module to 7seg display (for collision)

@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at Dino_Interperter.v(52): always construct contains both blocking and non-blocking assignments File: C:/_verilog/PLD_finalPrjct/modifiedTVDemo/dinoCode/Dino_Interperter.v Line: 52
+Warning (10268): Verilog HDL information at Dino_Interperter.v(73): always construct contains both blocking and non-blocking assignments File: C:/_verilog/PLD_finalPrjct/modifiedTVDemo/dinoCode/Dino_Interperter.v Line: 73
