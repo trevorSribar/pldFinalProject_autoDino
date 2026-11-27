@@ -36,6 +36,7 @@ reg [7:0] posObjY = 0;
 reg [8:0] movementPerFrame = 1;
 reg [7:0] framesPerMove = 0;
 reg [7:0] oldFramesPerMove = 0;
+reg resetLoopVariables = 1;
 
 // X 209 to 450
 // Y 240 to 284
@@ -74,12 +75,17 @@ always @(posedge newFrame) begin
     // Store "previous loop" variables
     oldEarliestX = earliestX;
 
-    // reset loop variables
-    earliestX = DINO_EARLY_X_RESET_VAL;
+    // set flag to reset loop variables
+    resetLoopVariables = 1;
 end
 
 // the actual logic
 always @(posedge clock) begin
+    // check if we need to reset things
+    if(resetLoopVariables) begin
+        earliestX = DINO_EARLY_X_RESET_VAL;
+        resetLoopVariables = 0;
+    end
     // if we're in the barrier and are a dark pixel
     if(inLayer && !geyscalePixel[7]) begin
         if(earliestX>columnX) begin
