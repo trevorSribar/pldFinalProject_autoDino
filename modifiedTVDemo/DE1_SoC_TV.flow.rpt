@@ -1,5 +1,5 @@
 Flow report for DE1_SoC_TV
-Thu Nov 26 01:11:37 2026
+Thu Nov 26 19:10:19 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Thu Nov 26 01:11:29 2026       ;
+; Flow Status                     ; Successful - Thu Nov 26 19:10:12 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; DE1_SoC_TV                                  ;
 ; Top-level Entity Name           ; DE1_SoC_TV                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 605 / 32,070 ( 2 % )                        ;
-; Total registers                 ; 1140                                        ;
+; Logic utilization (in ALMs)     ; 616 / 32,070 ( 2 % )                        ;
+; Total registers                 ; 1195                                        ;
 ; Total pins                      ; 241 / 457 ( 53 % )                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 34,816 / 4,065,280 ( < 1 % )                ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/26/2026 01:09:35 ;
+; Start date & time ; 11/26/2026 19:07:56 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE1_SoC_TV          ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 10995770589186.179568057532724         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 10995770589186.179574527614416         ; --            ; --          ; --         ;
 ; ECO_REGENERATE_REPORT               ; On                                     ; Off           ; --          ; --         ;
 ; FITTER_EFFORT                       ; Standard Fit                           ; Auto Fit      ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
@@ -104,10 +104,10 @@ refer to the applicable agreement for further details.
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 2102167 MB          ; 00:00:19                           ;
-; Fitter               ; 00:01:35     ; 1.1                     ; 2105153 MB          ; 00:12:13                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 2102001 MB          ; 00:00:05                           ;
-; Timing Analyzer      ; 00:00:07     ; 1.9                     ; 2102531 MB          ; 00:00:10                           ;
-; Total                ; 00:01:59     ; --                      ; --                  ; 00:12:47                           ;
+; Fitter               ; 00:01:57     ; 1.1                     ; 2105131 MB          ; 00:15:28                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 2102010 MB          ; 00:00:05                           ;
+; Timing Analyzer      ; 00:00:06     ; 1.8                     ; 2102529 MB          ; 00:00:09                           ;
+; Total                ; 00:02:21     ; --                      ; --                  ; 00:16:01                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

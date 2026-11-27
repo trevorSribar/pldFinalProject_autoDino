@@ -20,7 +20,7 @@ module Dino_Interperter(
 );
 
 wire inLayer = columnX > 240 && columnX < 480 && rowY > 240 && rowY < 480;
-wire tempBounds = columnX == 240 || columnX == 480 || rowY == 240 || rowY == 480;
+wire tempBounds = (columnX == 209 || columnX == 450 || rowY == 240 || rowY == 284);
 
 // debug findout where exact keepout
 assign setRedFlag = tempBounds;

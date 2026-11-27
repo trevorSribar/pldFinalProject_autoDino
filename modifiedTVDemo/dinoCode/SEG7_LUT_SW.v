@@ -15,7 +15,7 @@ reg [24:0] clockTickCounter = 0;
 
 always @(posedge clkIn) begin
     clockTickCounter <= clockTickCounter + 1;
-    if (clockTickCounter == 6750000) begin
+    if (clockTickCounter == 3375000) begin
         clockTickCounter <= 0;
         if (nextPosToWrite == 7'b1011111) begin
             nextPosToWrite <= 7'b1111110;

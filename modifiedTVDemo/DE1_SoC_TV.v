@@ -284,8 +284,8 @@ assign	m2VGA_Read	=	VGA_Y[0]		?	VGA_Read	:	1'b0		;
 assign	mYCbCr_d	=	!VGA_Y[0]		?	m1YCbCr		:
 											      m2YCbCr		;
 // only have one of these, it enables/disbles 121 filtering
-assign	mYCbCr		=	m5YCbCr; // w/ filtering
-//assign	mYCbCr		=	m3YCbCr; // w/ out filtering
+//assign	mYCbCr		=	m5YCbCr; // w/ filtering
+assign	mYCbCr		=	m3YCbCr; // w/ out filtering
 
 assign	Tmp1	=	m4YCbCr[7:0]+mYCbCr_d[7:0];
 assign	Tmp2	=	m4YCbCr[15:8]+mYCbCr_d[15:8];
@@ -405,12 +405,12 @@ wire [9:0] vga_g10;
 wire [9:0] vga_b10;
 
 // we want to use the flag to make it red
-assign VGA_R = vga_r10[9:2];
-assign VGA_G = vga_g10[9:2];
-assign VGA_B = vga_b10[9:2];
-// assign VGA_R = setThisPixelToRed ? 8'hC0 : vga_r10[9:2];
-// assign VGA_G = setThisPixelToRed ? 8'h0A : vga_g10[9:2];
-// assign VGA_B = setThisPixelToRed ? 8'h0A : vga_b10[9:2];
+// assign VGA_R = vga_r10[9:2];
+// assign VGA_G = vga_g10[9:2];
+// assign VGA_B = vga_b10[9:2];
+assign VGA_R = setThisPixelToRed ? 8'hC0 : vga_r10[9:2];
+assign VGA_G = setThisPixelToRed ? 8'h0A : vga_g10[9:2];
+assign VGA_B = setThisPixelToRed ? 8'h0A : vga_b10[9:2];
 
 VGA_Ctrl			u9	(	//	Host Side
 							.iRed(mRed),
@@ -465,29 +465,29 @@ I2C_AV_Config 	u1	(	//	Host Side
 // added code
 
 // dino module
-// Dino_Interperter u13 (
-//    // ins
-//    .clock(TD_CLK27), // same clock VGA uses
-//    .columnX(VGA_X),
-//    .rowY(VGA_Y),
-//    .geyscalePixel(mY),
+Dino_Interperter u13 (
+   // ins
+   .clock(TD_CLK27), // same clock VGA uses
+   .columnX(VGA_X),
+   .rowY(VGA_Y),
+   .geyscalePixel(mY),
 
-//    //outs
-//    .upCommand(GPIO_1[34]),
-//    .downCommand(GPIO_1[35]),
-//    .setRedFlag(setThisPixelToRed),
-//    .timeTillCollision(collisionTimeToPass));
+   //outs
+   .upCommand(GPIO_1[34]),
+   .downCommand(GPIO_1[35]),
+   .setRedFlag(setThisPixelToRed),
+   .timeTillCollision(collisionTimeToPass));
 
 // dino module to 7seg display (for collision)
 //	display for the number of frames till collision
-// SEG7_LUT_INT 	u0	(	.oSEG0(HEX0),
-// 							.oSEG1(HEX1),
-// 							.oSEG2(HEX2),
-// 							.intIn(collisionTimeToPass));
+SEG7_LUT_INT 	u0	(	.oSEG0(HEX0),
+							.oSEG1(HEX1),
+							.oSEG2(HEX2),
+							.intIn(collisionTimeToPass));
 
 // display for running keyboard commands
-// SEG7_LUT_SW    u14 ( .oSEG(HEX5),
-//                      .clkIn(TD_CLK27),
-//                      .swIn(SW[0]));
+SEG7_LUT_SW    u14 ( .oSEG(HEX5),
+                     .clkIn(TD_CLK27),
+                     .swIn(SW[0]));
 
 endmodule
